@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const MainCard = styled.div`
@@ -43,38 +44,20 @@ const AddButton = styled.button`
   cursor: pointer;
 `;
 
-const PokemonCard = (pokemon) => {
-  const [selectedPokemon, setSelectedPokemon] = useState();
+const PokemonCard = ({ pokemon, addPokemon }) => {
   const { img_url, korean_name, id } = pokemon;
-  //포켓몬 추가
-  const addPokemon = (addPokemon) => {
-    if (selectedPokemon.length >= 6) {
-      alert("포켓몬은 최대 6개까지만 선택할 수 있습니다.");
-    } else {
-      setSelectedPokemon((prevSelected) => [...prevSelected, addPokemon]);
-    }
-  };
 
-  //포켓몬 삭제
-  const removePokemon = (removePokemon) => {
-    setSelectedPokemon((prevSelected) =>
-      prevSelected.filter(
-        (prevSelected) => prevSelected.id !== removePokemon.id
-      )
-    );
-  };
-
-  const onClickEvent = AddButton === "추가" ? addPokemon : removePokemon;
-
+  const navigate = useNavigate();
   return (
     <MainCards>
-      <MainCard>
+      <MainCard onClick={() => navigate("detail:id")}>
         <PokemonImage src={img_url} />
         <PokemonName>{korean_name}</PokemonName>
         <PokemonNumber>{id}</PokemonNumber>
         <AddButton
-          onClick={() => {
-            onClickEvent();
+          onClick={(e) => {
+            e.stopPropagation();
+            addPokemon(pokemon);
           }}
         >
           추가

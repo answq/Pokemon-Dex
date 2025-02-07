@@ -1,12 +1,11 @@
 import PokemonCard from "./PokemonCard";
-import MOCK_DATA from "../assets/mock";
 
-const PokemonList = () => {
-  {
-    MOCK_DATA.map(() => {
-      return <PokemonCard />;
-    });
-  }
+const PokemonList = ({ PokemonList, addPokemon }) => {
+  return PokemonList.map((pokemon) => {
+    return (
+      <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon} />
+    );
+  });
 };
 
 export default PokemonList;

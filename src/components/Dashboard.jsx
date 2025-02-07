@@ -1,14 +1,9 @@
-import React from "react";
-import Card from "./Card";
-
-
+import React from 'react'
 
 const Dashboard = () => {
   return (
-    <Card>
-      <h1>나만의 포켓몬</h1>
-    </Card>
-  );
-};
+    <div>Dashboard</div>
+  )
+}
 
-export default Dashboard;
+export default Dashboard
