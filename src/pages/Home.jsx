@@ -7,8 +7,13 @@ const StBox = styled.button`
   height: 50px;
   color: white;
   font-weight: bold;
+  font-size: medium;
   background-color: #d62206;
+  border: none;
+  border-radius: 5px;
   margin: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Home = () => {
