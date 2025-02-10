@@ -7,7 +7,12 @@ const DeleteButton = styled.button`
   color: white;
   font-size: x-small;
   border-radius: 5%;
+  border-color: red;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: #881616;
+  }
 `;
 
 const MyMon = styled.div`

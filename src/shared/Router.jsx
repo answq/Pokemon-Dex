@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Dex from "../pages/Dex";
-import PokemonCard from "../components/PokemonCard";
 import PokemonDetail from "../pages/PokemonDetail";
 
 const Router = () => {

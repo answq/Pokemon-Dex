@@ -11,7 +11,6 @@ const MainCards = styled.div`
   gap: 2px;
 `;
 
-
 const MainCard = styled.div`
   width: 50%;
   background-color: pink;
@@ -25,7 +24,6 @@ const MainCard = styled.div`
   padding-bottom: 10px;
   margin: 10px;
 `;
-
 
 const PokemonImage = styled.img`
   margin-top: 1rem;
@@ -45,8 +43,13 @@ const AddButton = styled.button`
   background-color: red;
   color: white;
   border-radius: 5%;
+  border-color: red;
   font-size: x-small;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: #881616;
+  }
 `;
 
 const PokemonCard = ({ pokemon, addPokemon }) => {
@@ -55,7 +58,7 @@ const PokemonCard = ({ pokemon, addPokemon }) => {
   const navigate = useNavigate();
   return (
     <MainCards>
-      <MainCard onClick={() => navigate("detail:id")}>
+      <MainCard onClick={() => navigate(`/detail/${id}`)}>
         <PokemonImage src={img_url} />
         <PokemonName>{korean_name}</PokemonName>
         <PokemonNumber>{id}</PokemonNumber>
