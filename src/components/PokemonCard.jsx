@@ -1,9 +1,19 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+const MainCards = styled.div`
+  width: 90%;
+  background-color: orange;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 2px;
+`;
+
+
 const MainCard = styled.div`
-  width: 100%;
+  width: 50%;
   background-color: pink;
   text-align: center;
   border-radius: 5%;
@@ -12,16 +22,10 @@ const MainCard = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding-bottom: 10px;
+  margin: 10px;
 `;
 
-const MainCards = styled.div`
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  justify-content: center;
-  gap: 2px;
-`;
 
 const PokemonImage = styled.img`
   margin-top: 1rem;
@@ -39,6 +43,7 @@ const PokemonNumber = styled.p`
 `;
 const AddButton = styled.button`
   background-color: red;
+  color: white;
   border-radius: 5%;
   font-size: x-small;
   cursor: pointer;
