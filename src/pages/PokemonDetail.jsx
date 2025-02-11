@@ -45,13 +45,12 @@ const BackButton = styled.button`
   }
 `;
 const PokemonDetail = () => {
-  //pokemon id를 찾고 문자가 아닌 Number로 변환
+ //parameter 가져오기
   const { id } = useParams();
-
+ //id를 찾고 문자가 아닌 Number로 변환
   const paramsId = Number(id);
-
-  console.log(id);
-
+//console.log(id);
+//id와 일치하는 mock_data 찾기
   const detailData = MOCK_DATA.find((pokemon) => pokemon.id === paramsId);
 
   const navigate = useNavigate();
