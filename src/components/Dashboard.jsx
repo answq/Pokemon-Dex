@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { styled } from "styled-components";
 import { useContext } from "react";
-import PokemonContext from "../contexts/PokemonContext";
+import { PokemonContext } from "../contexts/PokemonContext";
 
 const RemoveButton = styled.button`
   background-color: red;
@@ -18,30 +18,25 @@ const RemoveButton = styled.button`
 `;
 
 const MyMon = styled.div`
-  width: 200%;
-  height: 100%;
-  background-color: white;
   border-radius: 5%;
   padding-bottom: 10px;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2%;
-  text-align: center;
+  margin-top: 50px;
 `;
 
 const MymonHeader = styled.h1`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+
+  text-align: center;
+  color: #d62206;
 `;
+
 const Mymoncontainer = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-top: 10rem;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  justify-content: flex-start;
 `;
+
 const MymonName = styled.p`
   font-weight: bold;
   font-size: small;
@@ -53,7 +48,13 @@ const MymonNumber = styled.p`
 `;
 
 const Dashboard = () => {
-  const selectedPokemon = [];
+  const pContext = useContext(PokemonContext);
+  const selectedPokemon = pContext.selectedPokemon ?? [];
+  console.log(pContext.selectedPokemon);
+  //포켓몬 삭제
+  const removePokemonHandler = () => {
+    pContext.removePokemonHandler(pokemon, id);
+  };
 
   return (
     <Card>
@@ -61,14 +62,13 @@ const Dashboard = () => {
       {selectedPokemon.map((pokemon) => {
         return (
           <Mymoncontainer>
-            {" "}
             <MyMon>
               <img src={pokemon.img_url} />
               <MymonName>{pokemon.korean_name} </MymonName>
               <MymonNumber>{pokemon.id}</MymonNumber>
               <RemoveButton
                 onClick={() => {
-                  removePokemonHandler(pokemon);
+                  removePokemonHandler();
                 }}
               >
                 삭제

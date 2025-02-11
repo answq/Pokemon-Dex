@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const CardWrapper = styled.div`
-  width: 80vw;
+  width: 80%;
+  height: 50%;
   padding: 1.5rem 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 5%;
   box-shadow: 0 2px 8px;
-  background-color: #62e4ce;
+  background-color: #fcedd8;
   text-align: center;
   display: flex;
   flex-direction: row;

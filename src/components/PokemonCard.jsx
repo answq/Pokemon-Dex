@@ -1,27 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import PokemonContext from "../contexts/PokemonContext";
 import { useContext } from "react";
+import { PokemonContext } from "../contexts/PokemonContext";
 
-const MainCards = styled.div`
-  width: 90%;
-  background-color: orange;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  justify-content: center;
-  gap: 2px;
+const MainCardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 28px;
+  place-items: center;
 `;
 
 const MainCard = styled.div`
-  width: 50%;
-  background-color: pink;
-  text-align: center;
+  background-color: #fcedd8;
   border-radius: 5%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  text-align: center;
   justify-content: center;
   align-items: center;
+  box-shadow: 3px 3px 3px 3px #7e7d7d;
   cursor: pointer;
   padding-bottom: 10px;
   margin: 10px;
@@ -58,20 +56,15 @@ const PokemonCard = ({ pokemon, buttonName }) => {
   const { img_url, korean_name, id } = pokemon;
   const pContext = useContext(PokemonContext);
 
+  //포켓몬 추가
   const addPokemonHandler = () => {
     pContext.addPokemon(pokemon, id);
   };
 
-  const removePokemonHandler = () => {
-    pContext.removePokemon(pokemon, id);
-  };
-
-  const onClickEvent =
-    buttonName === "추가" ? addPokemonHandler : removePokemonHandler;
   const navigate = useNavigate();
 
   return (
-    <MainCards>
+    <MainCardWrapper>
       <MainCard onClick={() => navigate(`/detail/${id}`)}>
         <PokemonImage src={img_url} />
         <PokemonName>{korean_name}</PokemonName>
@@ -79,13 +72,13 @@ const PokemonCard = ({ pokemon, buttonName }) => {
         <AddButton
           onClick={(e) => {
             e.stopPropagation(); //버블링 방지
-            onClickEvent();
+            addPokemonHandler();
           }}
         >
           추가
         </AddButton>
       </MainCard>
-    </MainCards>
+    </MainCardWrapper>
   );
 };
 
